@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "链接打开方式管理扩展",
+    "description": "扩展名称"
+  },
+  "extDescription": {
+    "message": "自定义网站链接的打开方式，支持在当前标签页或新标签页打开链接",
+    "description": "扩展描述"
+  }
+} 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>链接打开方式设置</title>
+  <style>
+    body {
+      font-family: 'Microsoft YaHei', sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #333;
+      position: relative;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #222222;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Microsoft YaHei', sans-serif;
+      font-size: 14px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .description {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+    button {
+      background-color: #222222;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #444444;
+    }
+    .save-message {
+      color: #222222;
+      margin-top: 10px;
+      display: none;
+    }
+    .tip-box {
+      background-color: #f8f8f8;
+      border-left: 4px solid #222222;
+      padding: 10px 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .tip-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #222222;
+    }
+    kbd {
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+      color: #333;
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1;
+      padding: 2px 4px;
+      margin: 0 2px;
+    }
+    .language-switch {
+      font-size: 14px;
+      cursor: pointer;
+      background: white;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px 10px;
+    }
+    .language-switch:hover {
+      background-color: #f5f5f5;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <h1 data-i18n="title">链接打开方式设置</h1>
+    <button id="languageSwitch" class="language-switch" data-i18n="switchLang">EN</button>
+  </div>
+  
+  <div class="tip-box">
+    <div class="tip-title" data-i18n="shortcutTip">快捷键提示</div>
+    <p data-i18n="shortcutDesc">无论配置如何，您都可以使用快捷键强制在当前标签页打开链接：</p>
+    <p><span data-i18n="pressKey">按住</span> <kbd>Z</kbd> <span data-i18n="andClick">键的同时点击链接</span></p>
+  </div>
+  
+  <div class="form-group">
+    <label for="selfTabDomains" data-i18n="selfTabDomainsLabel">强制在当前标签页打开的网站列表：</label>
+    <textarea id="selfTabDomains" data-i18n-placeholder="selfTabDomainsPlaceholder" placeholder="每行输入一个域名，例如：bilibili.com"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="newTabDomains" data-i18n="newTabDomainsLabel">强制在新标签页打开的网站列表：</label>
+    <textarea id="newTabDomains" data-i18n-placeholder="newTabDomainsPlaceholder" placeholder="每行输入一个域名，例如：zhihu.com"></textarea>
+  </div>
+  
+  <button id="save" data-i18n="saveButton">保存设置</button>
+  <div id="saveMessage" class="save-message" data-i18n="saveSuccess">设置已保存！</div>
+
+  <script src="i18n.js"></script>
+  <script src="options.js"></script>
+</body>
+</html> 

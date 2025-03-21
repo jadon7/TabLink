@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>链接打开方式设置</title>
+  <style>
+    body {
+      font-family: 'Microsoft YaHei', sans-serif;
+      width: 280px;
+      padding: 15px;
+      margin: 0;
+      color: #333;
+      position: relative;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      color: #222222;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .domain-info {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #666;
+    }
+    button {
+      width: 100%;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+      margin-top: 5px;
+    }
+    .config-button {
+      background-color: white;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+    .config-button:hover {
+      background-color: #f9f9f9;
+    }
+    .save-message {
+      color: #222222;
+      margin-top: 10px;
+      display: none;
+      text-align: center;
+      font-size: 12px;
+    }
+    .current-domain {
+      font-weight: bold;
+      color: #222222;
+    }
+    .button-group {
+      display: flex;
+      border-radius: 4px;
+      overflow: hidden;
+      background-color: #eee;
+    }
+    .option-button {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      background-color: #eee;
+      color: #333;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .option-button.active {
+      background-color: #222222;
+      color: white;
+    }
+    .option-button:not(:last-child) {
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .language-switch {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 12px;
+      cursor: pointer;
+      background: none;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 2px 6px;
+      width: auto;
+      margin: 0;
+      color: #666;
+      background-color: white;
+    }
+    .language-switch:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <h1 data-i18n="title">链接打开方式设置</h1>
+  <button id="languageSwitch" class="language-switch" data-i18n="switchLang">EN</button>
+  
+  <div class="form-group">
+    <label data-i18n="currentPageSetting">当前网页打开方式:</label>
+    <div class="button-group">
+      <button id="defaultOption" class="option-button" data-value="default" data-i18n="defaultOption">不设置</button>
+      <button id="selfOption" class="option-button" data-value="self" data-i18n="selfOption">当前标签页</button>
+      <button id="blankOption" class="option-button" data-value="blank" data-i18n="blankOption">新标签页面</button>
+    </div>
+    <div class="domain-info"><span data-i18n="currentDomainLabel">当前域名</span>：<span id="currentDomain" class="current-domain"></span></div>
+  </div>
+  
+  <button id="openOptions" class="config-button" data-i18n="configGlobalRules">配置全局规则</button>
+  
+  <div id="saveMessage" class="save-message" data-i18n="saveSuccess">设置已保存！</div>
+
+  <script src="i18n.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html> 

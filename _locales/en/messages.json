@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Link Opening Manager",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Customize how links are opened on different websites, supporting opening in current tab or new tab",
+    "description": "Extension description"
+  }
+} 
