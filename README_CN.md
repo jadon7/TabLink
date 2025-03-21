@@ -22,7 +22,7 @@ Chrome 商店版本正在审核中
 
 ## 安装方法
 
-1. 下载或克隆此仓库到本地
+1. 下载[压缩包](https://github.com/jadon7/TabLink/releases/download/0.0.1/TabLink.zip)并解压
 2. 打开Chrome浏览器，转到扩展程序页面 (`chrome://extensions/`)
 3. 开启右上角的"开发者模式"
 4. 点击"加载已解压的扩展程序"

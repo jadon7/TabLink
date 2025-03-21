@@ -18,7 +18,7 @@ A simple Chrome extension that allows you to customize how links are opened on w
 
 ## Installation
 
-1. Download or clone this repository to your local machine
+1. Download the [zip file](https://github.com/jadon7/TabLink/releases/download/0.0.1/TabLink.zip) and unzip it
 2. Open Chrome browser and navigate to the extensions page (`chrome://extensions/`)
 3. Enable "Developer mode" in the top right corner
 4. Click "Load unpacked"
