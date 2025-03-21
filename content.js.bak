@@ -1,25 +1,19 @@
-// 存储设置的变量
-let selfTabDomains = ['bilibili.com']; // 默认在当前标签页打开的域名
-let newTabDomains = []; // 默认在新标签页打开的域名
-// 记录 z 键状态
+let selfTabDomains = []; 
+let newTabDomains = []; 
+
 let zKeyPressed = false;
 
-// 从存储中加载设置
 function loadSettings() {
   chrome.storage.sync.get({
     selfTabDomains: 'bilibili.com',
     newTabDomains: ''
   }, (items) => {
-    // 将文本格式的域名列表转换为数组
     selfTabDomains = items.selfTabDomains.split('\n').filter(domain => domain.trim() !== '');
     newTabDomains = items.newTabDomains.split('\n').filter(domain => domain.trim() !== '');
-    
-    // 设置加载完成后，处理当前页面的链接
     processLinks();
   });
 }
 
-// 判断URL是否匹配指定的域名列表
 function matchesDomain(url, domainList) {
   return domainList.some(domain => {
     const trimmedDomain = domain.trim();
@@ -27,41 +21,33 @@ function matchesDomain(url, domainList) {
   });
 }
 
-// 监听DOM变化，处理动态加载的内容
 const observer = new MutationObserver((mutations) => {
   processLinks();
 });
 
-// 配置观察选项
 const config = { 
   childList: true, 
   subtree: true 
 };
 
-// 处理页面中的所有链接
 function processLinks() {
-  // 获取页面上所有的链接
   const links = document.querySelectorAll('a');
   
-  // 修改每个链接的打开方式
   links.forEach(link => {
     const href = link.getAttribute('href');
     if (!href) return;
     
     const url = href.startsWith('/') ? window.location.origin + href : href;
     
-    // 检查是否应该在当前标签页打开
     if (matchesDomain(url, selfTabDomains)) {
       link.setAttribute('target', '_self');
     } 
-    // 检查是否应该在新标签页打开
     else if (matchesDomain(url, newTabDomains)) {
       link.setAttribute('target', '_blank');
     }
   });
 }
 
-// 监听 z 键按下和释放
 document.addEventListener('keydown', (event) => {
   if (event.key.toLowerCase() === 'z') {
     zKeyPressed = true;
@@ -74,15 +60,12 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
-// 页面加载完成后加载设置并处理链接
 document.addEventListener('DOMContentLoaded', () => {
   loadSettings();
   
-  // 开始观察页面变化
   observer.observe(document.body, config);
 });
 
-// 页面加载后可能已经错过DOMContentLoaded事件，所以立即执行一次
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     loadSettings();
@@ -93,49 +76,36 @@ if (document.readyState === 'loading') {
   observer.observe(document.body, config);
 }
 
-// 添加点击事件监听器来拦截使用JavaScript打开的新窗口
 document.addEventListener('click', (event) => {
-  // 检测是否按下了 z 键
   const isForceSelfTabShortcut = zKeyPressed;
   
-  // 尝试找到被点击的链接
   let target = event.target;
   while (target && target.tagName !== 'A') {
     target = target.parentElement;
   }
   
-  // 如果找到链接
   if (target && target.tagName === 'A') {
     const href = target.getAttribute('href');
     if (!href) return;
     
     const url = href.startsWith('/') ? window.location.origin + href : href;
     
-    // 如果按下了强制当前标签页打开的快捷键
     if (isForceSelfTabShortcut && target.getAttribute('target') === '_blank') {
-      // 阻止默认行为
       event.preventDefault();
-      // 在当前标签页中打开链接
       window.location.href = href;
       return;
     }
     
-    // 检查是否应该在当前标签页打开
     if (matchesDomain(url, selfTabDomains) && target.getAttribute('target') === '_blank') {
-      // 阻止默认行为
       event.preventDefault();
-      // 在当前标签页中打开链接
       window.location.href = href;
     }
-    // 检查是否应该在新标签页打开
     else if (matchesDomain(url, newTabDomains) && target.getAttribute('target') !== '_blank') {
-      // 不阻止默认行为，但改变target属性
       target.setAttribute('target', '_blank');
     }
   }
 }, true);
 
-// 监听存储变化，实时更新设置
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === 'sync') {
     if (changes.selfTabDomains) {
@@ -144,7 +114,6 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     if (changes.newTabDomains) {
       newTabDomains = changes.newTabDomains.newValue.split('\n').filter(domain => domain.trim() !== '');
     }
-    // 设置变化后重新处理链接
     processLinks();
   }
 }); 
