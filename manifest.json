@@ -3,7 +3,7 @@
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
   "version": "1.0",
-  "default_locale": "zh",
+  "default_locale": "zh_CN",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
