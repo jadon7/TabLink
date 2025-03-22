@@ -14,7 +14,6 @@ A simple Chrome extension that allows you to customize how links are opened on w
 - Support shortcut key: hold Z key while clicking a link to force it to open in the current tab
 - Support switching between Chinese and English interfaces
 
-![image](./assets/options_en.png)
 
 ## Installation
 
@@ -38,6 +37,8 @@ A simple Chrome extension that allows you to customize how links are opened on w
 3. In "Websites to open in new tab", enter domain names, one per line
 4. Click the "Save Settings" button
 
+![image](./assets/options_en.png)
+
 ### Temporary Override
 
 - To temporarily open a link in the current tab (regardless of settings), hold the Z key while clicking the link
@@ -50,7 +51,6 @@ A simple Chrome extension that allows you to customize how links are opened on w
 
 - Domain matching supports exact match, subdomain match, main domain match, and wildcard match
 - Input URLs will be automatically standardized to pure domain format, such as `example.com`
-- After initial installation, no domain rules are set by default
 
 ## Notes
 
